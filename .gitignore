@@ -12,3 +12,10 @@ vendor
 tmp
 *.log
 composer.lock
+!.placeholder
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/**/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+.ebextensions/**/*
