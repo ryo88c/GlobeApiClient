@@ -42,6 +42,6 @@ trait GlobeApiClientInject
             $options['query'] = [];
         }
         $options['query']['access_token'] = $_ENV['GLOBE_API_TOKEN'];
-        return $this->apiClient->request($this->uri->method, static::$endpoint . $this->uri->path, $options);
+        return $this->apiClient->request($this->uri->method, self::$endpoint . $this->uri->path, $options);
     }
 }
