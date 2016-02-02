@@ -18,10 +18,13 @@ class AppModule extends AbstractModule
      */
     protected function configure()
     {
-        Dotenv::load([
-            'filepath' => dirname(dirname(__DIR__)) . '/.env',
-            'toEnv' => true
-        ]);
+        $dotEnvPath = dirname(dirname(__DIR__)) . '/.env';
+        if (file_exists($dotEnvPath) && is_readable($dotEnvPath)) {
+            Dotenv::load([
+                'filepath' => $dotEnvPath,
+                'toEnv' => true
+            ]);
+        }
         $this->install(new PackageModule);
         $this->bind(ClientInterface::class)->to(Client::class);
         $this->bind(GlobeApiClientInterface::class)->to(GlobeApiClient::class);
