@@ -55,18 +55,8 @@ final class AppAdapter implements AdapterInterface
      */
     public function get(AbstractUri $uri)
     {
-        if (empty($uri->method)) {
-            if (getenv('REQUEST_METHOD')) {
-                $method = getenv('REQUEST_METHOD');
-            } elseif (isset($_SERVER['argv']) && isset($_SERVER['argv'][1])) {
-                $method = $_SERVER['argv'][1];
-            }
-        } else {
-            $method = $uri->method;
-        }
-
-        if (isset($method)) {
-            foreach ($this->patterns[$method] as $regex => $resource) {
+        if (isset($this->patterns[$uri->method])) {
+            foreach ($this->patterns[$uri->method] as $regex => $resource) {
                 if (!preg_match(sprintf('!^%s\z!', $regex), $uri->path)) {
                     continue;
                 }
