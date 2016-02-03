@@ -10,7 +10,7 @@ use Ryo88c\GlobeApiClient\Module\GlobeApiClientInterface;
 
 class FakeGlobeApiClient implements GlobeApiClientInterface
 {
-    public function request($method, $path, array $options = [])
+    public function request($method, $uri, array $options = [])
     {
         return true;
     }

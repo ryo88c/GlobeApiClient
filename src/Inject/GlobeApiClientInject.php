@@ -29,7 +29,7 @@ trait GlobeApiClientInject
     private function embedAccessToken($options = [])
     {
         if (!isset($this->uri->query['subscriber'])) {
-            return;
+            return $options;
         }
         $accessTokens = $this->getAccessTokens();
         if (isset($accessTokens[$this->uri->query['subscriber']])) {
@@ -64,7 +64,8 @@ trait GlobeApiClientInject
     private function createUri($path)
     {
         $endpoint = empty($this->endpoint) ? $this->defaultEndpoint : $this->endpoint;
-        $apiType = isset($this->apiType) ? $this->apiType : strtolower(end(explode('\\', get_class())));
+        $className = explode('\\', get_class());
+        $apiType = isset($this->apiType) ? $this->apiType : strtolower(end($className));
         if (isset($this->version)) {
             $uri = sprintf('%s/%s/%s%s', $endpoint, $apiType, $this->version, $path);
         } else {
