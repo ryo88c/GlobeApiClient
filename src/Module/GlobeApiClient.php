@@ -18,6 +18,15 @@ class GlobeApiClient implements GlobeApiClientInterface
     private $client;
 
     /**
+     * smsmessaging メッセージの送信
+     * location 位置情報, 課金残高
+     * payment 決済
+     * voice 音声（受付）
+     * oauth 認証（受付）
+     * demand メッセージ受信（受付）
+     */
+
+    /**
      * @Inject
      */
     public function setClient(ClientInterface $client)
@@ -25,10 +34,10 @@ class GlobeApiClient implements GlobeApiClientInterface
         $this->client = $client;
     }
 
-    public function request($method, $path, array $options = [])
+    public function request($method, $uri, array $options = [])
     {
         try {
-            $res = $this->client->request($method, $path, $options);
+            $res = $this->client->request($method, $uri, $options);
             $statusCode = $res->getStatusCode();
             if ($statusCode === 200 || $statusCode === 201) {
                 return json_decode($res->getBody()->getContents(), true);

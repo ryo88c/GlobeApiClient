@@ -12,6 +12,7 @@ vendor
 tmp
 *.log
 composer.lock
+var/conf/*
 !.placeholder
 
 # Elastic Beanstalk Files

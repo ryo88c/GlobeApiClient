@@ -8,5 +8,5 @@ namespace Ryo88c\GlobeApiClient\Module;
 
 interface GlobeApiClientInterface
 {
-    public function request($method, $path, array $options = []);
+    public function request($method, $uri, array $options = []);
 }

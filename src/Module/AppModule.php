@@ -28,7 +28,5 @@ class AppModule extends AbstractModule
         $this->install(new PackageModule);
         $this->bind(ClientInterface::class)->to(Client::class);
         $this->bind(GlobeApiClientInterface::class)->to(GlobeApiClient::class);
-        $this->bind(SchemeCollectionInterface::class)->toProvider(SchemeCollectionProvider::class);
-        $this->bind(ResourceInterface::class)->to(Resource::class);
     }
 }
