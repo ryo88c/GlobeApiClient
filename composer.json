@@ -24,6 +24,16 @@
         }
     },
     "scripts": {
+        "post-install-cmd": [
+            "chmod -R 777 var/log",
+            "chmod -R 777 var/tmp",
+            "chmod -R 777 var/conf"
+        ],
+        "post-update-cmd": [
+            "chmod -R 777 var/log",
+            "chmod -R 777 var/tmp",
+            "chmod -R 777 var/conf"
+        ],
         "test": [
             "php vendor/phpmd/phpmd/src/bin/phpmd src text ./phpmd.xml",
             "php vendor/squizlabs/php_codesniffer/scripts/phpcs",
